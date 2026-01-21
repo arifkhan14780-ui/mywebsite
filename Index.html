@@ -1,10 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
+  <meta charset="UTF-8">
+  <title>Arif Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+    body { background: #f4f6f9; }
+
+    /* Header */
+    header {
+      background: #0d6efd;
+      color: #fff;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 26px; }
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Banner */
+    .banner {
+      background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3') center/cover;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      padding-left: 50px;
+      color: #fff;
+    }
+    .banner h2 { font-size: 40px; max-width: 600px; }
+
+    /* Sections */
+    section { padding: 50px; background: #fff; margin-bottom: 10px; }
+    section h2 { margin-bottom: 20px; color: #0d6efd; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .service-box {
+      background: #f1f5ff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .service-box h3 { margin-bottom: 10px; }
+
+    /* Doctors */
+    .doctors { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .doctor {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+    .doctor img { width: 100%; border-radius: 8px; }
+
+    /* Appointment */
+    .appointment input, .appointment select, .appointment button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .appointment button {
+      background: #0d6efd;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .appointment button:hover { background: #084298; }
+
+    /* Footer */
+    footer {
+      background: #0d6efd;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>Meri pehli website live ho gayi 🎉</p>
+
+  <!-- Header -->
+  <header>
+    <h1>Arif Hospital</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Appointment</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner" id="home">
+    <h2>Providing Quality Healthcare For A Better Tomorrow</h2>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-box"><h3>Emergency Care</h3><p>24x7 emergency services</p></div>
+      <div class="service-box"><h3>Cardiology</h3><p>Heart care specialists</p></div>
+      <div class="service-box"><h3>Neurology</h3><p>Brain & nerve treatment</p></div>
+      <div class="service-box"><h3>Laboratory</h3><p>Advanced diagnostic lab</p></div>
+    </div>
+  </section>
+
+  <!-- Doctors -->
+  <section id="doctors">
+    <h2>Our Doctors</h2>
+    <div class="doctors">
+      <div class="doctor">
+        <img src="https://via.placeholder.com/300x200" />
+        <h3>Dr. Arif Khan</h3>
+        <p>Cardiologist</p>
+      </div>
+      <div class="doctor">
+        <img src="https://via.placeholder.com/300x200" />
+        <h3>Dr. S. Sharma</h3>
+        <p>Neurologist</p>
+      </div>
+      <div class="doctor">
+        <img src="https://via.placeholder.com/300x200" />
+        <h3>Dr. R. Verma</h3>
+        <p>General Physician</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment -->
+  <section id="appointment">
+    <h2>Book Appointment</h2>
+    <div class="appointment">
+      <input type="text" id="name" placeholder="Patient Name">
+      <input type="number" id="mobile" placeholder="Mobile Number">
+      <select id="department">
+        <option value="">Select Department</option>
+        <option>Cardiology</option>
+        <option>Neurology</option>
+        <option>General</option>
+      </select>
+      <button onclick="bookAppointment()">Submit</button>
+      <p id="msg"></p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Delhi, India</p>
+    <p>📞 +91 9876543210</p>
+    <p>✉️ citycare@hospital.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Arif Hospital. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function bookAppointment() {
+      var name = document.getElementById('name').value;
+      var mobile = document.getElementById('mobile').value;
+      var dept = document.getElementById('department').value;
+
+      if (name === '' || mobile === '' || dept === '') {
+        document.getElementById('msg').innerText = 'Please fill all details';
+        document.getElementById('msg').style.color = 'red';
+      } else {
+        document.getElementById('msg').innerText = 'Appointment booked successfully!';
+        document.getElementById('msg').style.color = 'green';
+      }
+    }
+  </script>
+
 </body>
 </html>
